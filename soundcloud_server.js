@@ -28,7 +28,7 @@ var getAccessToken = function (query) {
 
   var response;
   try {
-     response = Meteor.http.post("https://api.soundcloud.com/oauth2/token", {
+     response = HTTP.post("https://api.soundcloud.com/oauth2/token", {
       headers: {Accept: 'application/json'},
       params: {
         code: query.code,
@@ -51,7 +51,7 @@ var getAccessToken = function (query) {
 
 var getIdentity = function (accessToken) {
   try {
-    return Meteor.http.get("https://api.soundcloud.com/me", {
+    return HTTP.get("https://api.soundcloud.com/me", {
       params: {
         oauth_token: accessToken,
         format: "json"
